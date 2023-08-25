@@ -37,7 +37,6 @@
 //THEN the saved events persist
 //```
 
-$(function () {});
 
 
 
@@ -46,5 +45,14 @@ $(function () {});
 
 
 
+//Reminder $ means function. When you work on this, open jQuery library for syntax. You can simplify Javascript by a ton.
+//.hide .hover .click .dblclick .mouseout are some examples. Also look up the "This" stuff cause that means something. 
+//Does it mean, do "this"? Also every line of code within a {} needs a ;
+$(document).ready(function(){
+  $(#IDGOESHERE).click(function() {
+    console.log("button clicked");
+  });
+})
+//The function above ensures that this is loaded before the website gets rendered.
 
-addEventListener.addEventListener('click')
+//For the function above, this will our get element and click function in one thanks to jquery.
