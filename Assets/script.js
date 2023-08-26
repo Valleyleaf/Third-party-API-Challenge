@@ -41,12 +41,60 @@
 var currentDate = dayjs();
 var today = currentDate.day();
 var date = dayjs().get('date');
+
+var currentHour = dayjs().get('hour')
+
 var dayVisual = document.getElementById('dayVisual')
 var dateFormat = currentDate.format('DD-MM-YYYY');
 var weekVariable = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+
 console.log('Day is: ' + weekVariable[today]);
 console.log('Date is: ' + date);
 dayVisual.textContent = weekVariable[today] + ': ' + dateFormat;
+
+hoursArray = []
+for (let i = 9; i <= 17; i++) {
+  hoursArray.push(`hour-${i}`);
+  // console.log(hoursArray[i - 9])
+}
+// Create a function that will check for the current hour. If lesser, make red, if equal, make yellow. If greater, make green.
+
+
+
+// hourArray = 
+// ['#hour-9',
+// '#hour-10',
+// '#hour-11',
+// '#hour-12',
+// '#hour-13',
+// '#hour-14',
+// '#hour-15',
+// '#hour-16',
+// '#hour-17'];
+// I could make a for loop for the above to reduce the amount of lines. Go back and change if I have time.
+
+function applyTimeColor(){
+for (let i = 9; i <= 17; i++){
+  if (hoursArray[i] < currentHour){
+// make red
+
+   } else if (hoursArray[i] === currentHour){
+    // Make yellow
+   } else {
+    // Make green
+   }
+  }
+}
+
+
+// Save in local storage function.
+
+
+
+
+
+
+
 
 // Logic will work as follows. There will be a div in the HTML for each hour between
 // 9-5. I will then implement a Javascript/jquery function that will check on the
