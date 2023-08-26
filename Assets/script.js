@@ -19,12 +19,12 @@
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
-  // TODO: Add code to display the current date in the header of the page.
+  // TODO: Add code to display the current date in the header of the page. COMPLETE
 
 //  ```md
 //GIVEN I am using a daily planner to create a schedule
-//WHEN I open the planner
-//THEN the current day is displayed at the top of the calendar
+//WHEN I open the planner COMPLETE
+//THEN the current day is displayed at the top of the calendar COMPLETE
 //WHEN I scroll down
 //THEN I am presented with timeblocks for standard business hours of 9am&ndash;5pm
 //WHEN I view the timeblocks for that day
@@ -37,10 +37,24 @@
 //THEN the saved events persist
 //```
 
+// VARIABLES AND CALLS GO HERE.
+var currentDate = dayjs();
+var today = currentDate.day();
+var date = dayjs().get('date');
+var dayVisual = document.getElementById('dayVisual')
+var dateFormat = currentDate.format('DD-MM-YYYY');
+var weekVariable = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+console.log('Day is: ' + weekVariable[today]);
+console.log('Date is: ' + date);
+dayVisual.textContent = weekVariable[today] + ': ' + dateFormat;
 
-
-
-
+// Logic will work as follows. There will be a div in the HTML for each hour between
+// 9-5. I will then implement a Javascript/jquery function that will check on the
+// current time. If the assigned value of the div is less than the current time
+// (reminder to implement a time check) then it will be given the Red class.
+// There will need ot be a variable checking on the current minutes. This will correspond
+// to the yellow box. All other will be green. Remember to research and figure ouit the
+// "This' variable that keeps being talked about."
 
 
 
@@ -49,8 +63,18 @@
 //.hide .hover .click .dblclick .mouseout are some examples. Also look up the "This" stuff cause that means something. 
 //Does it mean, do "this"? Also every line of code within a {} needs a ;
 $(document).ready(function(){
-  $(#IDGOESHERE).click(function() {
+  $('.save-button').click(function() {
     console.log("button clicked");
+
+
+
+
+
+
+
+
+
+
   });
 })
 //The function above ensures that this is loaded before the website gets rendered.
