@@ -1,7 +1,7 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-//$(function () {
+$(document).ready(function () {
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -39,6 +39,7 @@
 
 // VARIABLES AND CALLS GO HERE.
 var currentDate = dayjs();
+
 var today = currentDate.day();
 var date = dayjs().get('date');
 
@@ -46,6 +47,7 @@ var currentHour = dayjs().get('hour')
 
 var dayVisual = document.getElementById('dayVisual')
 var dateFormat = currentDate.format('DD-MM-YYYY');
+console.log('Current dayJS time is: ' + dateFormat);
 var weekVariable = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
 
 console.log('Day is: ' + weekVariable[today]);
@@ -59,8 +61,6 @@ for (let i = 9; i <= 17; i++) {
 }
 // Create a function that will check for the current hour. If lesser, make red, if equal, make yellow. If greater, make green.
 
-
-
 // hourArray = 
 // ['#hour-9',
 // '#hour-10',
@@ -73,28 +73,33 @@ for (let i = 9; i <= 17; i++) {
 // '#hour-17'];
 // I could make a for loop for the above to reduce the amount of lines. Go back and change if I have time.
 
-function applyTimeColor(){
-for (let i = 9; i <= 17; i++){
-  if (hoursArray[i] < currentHour){
-// make red
+  function applyTimeColor(){
+    for (let i = 9; i <= 17; i++){
+      //Below is still undefined.
+      var dayColor = document.getElementById(hoursArray[i]);
+      console.log('AAA: ' + hoursArray[i])
+      if (hoursArray[i] < currentHour){
+    //PAST
+        console.log('Current time is: ' + currentHour);
+        dayColor.addClass('past')
+       } else if (hoursArray[i] === currentHour){
+        //PRESENT
+        console.log('Current time is: ' + currentHour);
+        dayColor.addClass('present')
+    
+       } else {
+        //FUTURE
+        console.log('Current time is: ' + currentHour);
+        dayColor.addClass('future')
+       }
+      }
+    }
 
-   } else if (hoursArray[i] === currentHour){
-    // Make yellow
-   } else {
-    // Make green
-   }
-  }
-}
+
+  applyTimeColor();
 
 
 // Save in local storage function.
-
-
-
-
-
-
-
 
 // Logic will work as follows. There will be a div in the HTML for each hour between
 // 9-5. I will then implement a Javascript/jquery function that will check on the
@@ -104,27 +109,16 @@ for (let i = 9; i <= 17; i++){
 // to the yellow box. All other will be green. Remember to research and figure ouit the
 // "This' variable that keeps being talked about."
 
-
-
-
 //Reminder $ means function. When you work on this, open jQuery library for syntax. You can simplify Javascript by a ton.
 //.hide .hover .click .dblclick .mouseout are some examples. Also look up the "This" stuff cause that means something. 
 //Does it mean, do "this"? Also every line of code within a {} needs a ;
 $(document).ready(function(){
   $('.save-button').click(function() {
     console.log("button clicked");
-
-
-
-
-
-
-
-
-
-
   });
 })
+
+});
 //The function above ensures that this is loaded before the website gets rendered.
 
 //For the function above, this will our get element and click function in one thanks to jquery.
