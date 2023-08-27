@@ -39,7 +39,7 @@ $(document).ready(function () {
 
 // VARIABLES AND CALLS GO HERE.
 var currentDate = dayjs();
-
+console.log('DAYJS IS: ' + currentDate)
 var today = currentDate.day();
 var date = dayjs().get('date');
 
@@ -56,8 +56,8 @@ dayVisual.textContent = weekVariable[today] + ': ' + dateFormat;
 
 hoursArray = []
 for (let i = 9; i <= 17; i++) {
-  hoursArray.push(`hour-${i}`);
-  // console.log(hoursArray[i - 9])
+  hoursArray.push({name: `hour-${i}`, hourX: i});
+  console.log(hoursArray[i - 9])
 }
 // Create a function that will check for the current hour. If lesser, make red, if equal, make yellow. If greater, make green.
 
@@ -74,23 +74,26 @@ for (let i = 9; i <= 17; i++) {
 // I could make a for loop for the above to reduce the amount of lines. Go back and change if I have time.
 
   function applyTimeColor(){
-    for (let i = 9; i <= 17; i++){
-      //Below is still undefined.
-      var dayColor = document.getElementById(hoursArray[i]);
-      console.log('AAA: ' + hoursArray[i])
-      if (hoursArray[i] < currentHour){
-    //PAST
+    for (let i = 0; i < hoursArray.length; i++){
+      var dayColor = document.getElementById(hoursArray[i].name);
+      //The above creates a VAR which value will be 'hour-Y'.
+      console.log('AAA: ' + hoursArray[i].name)
+      //Below does not work because hoursArray[i returns '#hours-9 to 17'] and not
+      // a number that can be compared to currentHour. Solution. Create arrayVar
+      // That can be converted to int and checked.
+      if (hoursArray[i].hourX < currentHour){
+        //PAST
         console.log('Current time is: ' + currentHour);
-        dayColor.addClass('past')
-       } else if (hoursArray[i] === currentHour){
+        dayColor.classList.add('past')
+       } else if (hoursArray[i].hourX === currentHour){
         //PRESENT
         console.log('Current time is: ' + currentHour);
-        dayColor.addClass('present')
+        dayColor.classList.add('present')
     
        } else {
         //FUTURE
         console.log('Current time is: ' + currentHour);
-        dayColor.addClass('future')
+        dayColor.classList.add('future')
        }
       }
     }
