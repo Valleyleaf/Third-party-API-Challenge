@@ -57,52 +57,70 @@ dayVisual.textContent = weekVariable[today] + ': ' + dateFormat;
 hoursArray = []
 for (let i = 9; i <= 17; i++) {
   hoursArray.push({name: `hour-${i}`, hourX: i});
-  console.log(hoursArray[i - 9])
+  // Stumbled across this video via a StackOverflow article: https://www.youtube.com/watch?v=jO4TNhNNeYs
+  // I would highly recommend adding ` to the curriculum as it seems to be a very useful feature.
+  // console.log(hoursArray[i - 9].name)
+  // console.log(hoursArray[i - 9].hourX)
 }
-// Create a function that will check for the current hour. If lesser, make red, if equal, make yellow. If greater, make green.
 
-// hourArray = 
-// ['#hour-9',
-// '#hour-10',
-// '#hour-11',
-// '#hour-12',
-// '#hour-13',
-// '#hour-14',
-// '#hour-15',
-// '#hour-16',
-// '#hour-17'];
-// I could make a for loop for the above to reduce the amount of lines. Go back and change if I have time.
+// hourTextArea = []
+// function addTextAreaIDs(){
+//     for (let i = 0; i < hoursArray.length; i++){
+//       var textarea= document.getElementsByClassName(textarea);
+//       var hourTextArea = document.getElementsByClassName(textarea + i);
+//       console.log(hourTextArea + i);
+//       console.log(textarea);
+//     }
+// }
+
+// addTextAreaIDs();
+
+// Create a function that will check for the current hour. If lesser, make red, if equal, make yellow. If greater, make green.
 
   function applyTimeColor(){
     for (let i = 0; i < hoursArray.length; i++){
       var dayColor = document.getElementById(hoursArray[i].name);
       //The above creates a VAR which value will be 'hour-Y'.
-      console.log('AAA: ' + hoursArray[i].name)
-      //Below does not work because hoursArray[i returns '#hours-9 to 17'] and not
-      // a number that can be compared to currentHour. Solution. Create arrayVar
-      // That can be converted to int and checked.
+      // console.log('AAA: ' + hoursArray[i].name)
       if (hoursArray[i].hourX < currentHour){
         //PAST
-        console.log('Current time is: ' + currentHour);
+        // console.log('Current time is: ' + currentHour);
         dayColor.classList.add('past')
        } else if (hoursArray[i].hourX === currentHour){
         //PRESENT
-        console.log('Current time is: ' + currentHour);
-        dayColor.classList.add('present')
-    
+        // console.log('Current time is: ' + currentHour);
+        dayColor.classList.add('present') 
        } else {
         //FUTURE
-        console.log('Current time is: ' + currentHour);
+        // console.log('Current time is: ' + currentHour);
         dayColor.classList.add('future')
        }
       }
     }
 
-
   applyTimeColor();
-
-
 // Save in local storage function.
+
+
+function repeatUserInputArray(){
+  for (let i = 0; i < hoursArray.length; i++){
+    var userInputArray = document.querySelector(`hour-${hoursArray.length}`)
+    console.log(userInputArray[i]);
+  }
+
+}
+
+
+var dailyLog = {
+
+
+}
+
+
+function storeLocalValues(){
+  localStorage.setItem("log", JSON.stringify(dailyLog));
+  console.log("button clicked");
+}
 
 // Logic will work as follows. There will be a div in the HTML for each hour between
 // 9-5. I will then implement a Javascript/jquery function that will check on the
@@ -116,12 +134,12 @@ for (let i = 9; i <= 17; i++) {
 //.hide .hover .click .dblclick .mouseout are some examples. Also look up the "This" stuff cause that means something. 
 //Does it mean, do "this"? Also every line of code within a {} needs a ;
 $(document).ready(function(){
-  $('.save-button').click(function() {
-    console.log("button clicked");
+  $('.save-button').click(function(event) {
+    storeLocalValues();
+    repeatUserInputArray();
+    event.preventDefault();
   });
 })
 
 });
 //The function above ensures that this is loaded before the website gets rendered.
-
-//For the function above, this will our get element and click function in one thanks to jquery.
