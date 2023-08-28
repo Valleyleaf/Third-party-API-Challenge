@@ -101,26 +101,19 @@ for (let i = 9; i <= 17; i++) {
   applyTimeColor();
 // Save in local storage function.
 
-
-function repeatUserInputArray(){
+userSchedualeItem = []
+function repeatUserInputArray(userInput){
   for (let i = 0; i < hoursArray.length; i++){
-    var userInputArray = document.querySelector(`hour-${hoursArray.length}`)
-    console.log(userInputArray[i]);
+    //This needs to check every item in the hoursArray, declare it's ID and then match it to the nested div "textcontent".
+    userSchedualeItem.push({name: `hour-${i}`, userSchedualeItem: i});
+    localStorage.setItem("log", JSON.stringify(userSchedualeItem));
+    console.log("button clicked");
+    console.log(userSchedualeItem[i]);
+    //Note, the above triggers 9 times.
   }
 
 }
 
-
-var dailyLog = {
-
-
-}
-
-
-function storeLocalValues(){
-  localStorage.setItem("log", JSON.stringify(dailyLog));
-  console.log("button clicked");
-}
 
 // Logic will work as follows. There will be a div in the HTML for each hour between
 // 9-5. I will then implement a Javascript/jquery function that will check on the
@@ -135,7 +128,6 @@ function storeLocalValues(){
 //Does it mean, do "this"? Also every line of code within a {} needs a ;
 $(document).ready(function(){
   $('.save-button').click(function(event) {
-    storeLocalValues();
     repeatUserInputArray();
     event.preventDefault();
   });
