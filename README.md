@@ -13,7 +13,7 @@ Open in browser of your choice. Enter the items you wish to save and hit the sav
 
 ## Usage
 
-Use to scheduale your day.
+Use to scheduale your day. Press the save icons to save your daily duties!
 
 
 ![05-third-party-apis-homework-demo](https://github.com/Valleyleaf/Third-party-API-Challenge/assets/137734906/fd803a55-d574-4b3b-8c52-e3d195f897b6)
